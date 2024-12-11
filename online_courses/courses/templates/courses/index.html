@@ -1,0 +1,16 @@
+<!-- templates/courses/index.html -->
+<h1>Добро пожаловать на наш сайт!</h1>
+<h2>Доступные курсы:</h2>
+
+<ul>
+    {% for course in courses %}
+        <li>
+            <h3>{{ course.title }}</h3>
+            <p>{{ course.description }}</p>
+            <p>Цена: {{ course.price }} руб.</p>
+            <p>
+                <a href="{% url 'enroll' course.id %}">Записаться на курс</a>
+            </p>
+        </li>
+    {% endfor %}
+</ul>
