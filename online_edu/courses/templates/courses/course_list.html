@@ -1,0 +1,33 @@
+<!-- courses/templates/courses/course_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список курсов</title>
+</head>
+<body>
+    <h2>Список курсов</h2>
+    <ul>
+        {% for course in courses %}
+            <li>
+                <h3>{{ course.title }}</h3>
+                <p>{{ course.description }}</p>
+                <p><strong>Цена:</strong> {{ course.price }}</p>
+                <p><strong>Дата начала:</strong> {{ course.start_date }}</p>
+                <p><strong>Дата окончания:</strong> {{ course.end_date }}</p>
+                {% if user.is_authenticated %}
+                    <form action="{% url 'enroll' course.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit">Записаться на курс</button>
+                    </form>
+                {% else %}
+                    <p><a href="{% url 'login' %}">Войдите</a> или <a href="{% url 'register' %}">зарегистрируйтесь</a> для записи на курс.</p>
+                {% endif %}
+            </li>
+        {% empty %}
+            <p>Курсы не найдены.</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>

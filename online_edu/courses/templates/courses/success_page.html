@@ -1,0 +1,16 @@
+<!-- success_page.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Успешная запись</title>
+</head>
+<body>
+    <h1>Вы успешно записались на курс "{{ course.title }}"!</h1>
+    <p>Поздравляем! Вы записаны на курс. Хотите записаться на другой курс?</p>
+    
+    <a href="{% url 'course_list' %}">Перейти к списку курсов</a><br>
+    <a href="{% url 'index' %}">На главную страницу</a>
+</body>
+</html>
